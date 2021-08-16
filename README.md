@@ -1,3 +1,4 @@
+![fake_samples_epoch_263](https://user-images.githubusercontent.com/88369122/129540172-a1335593-0c34-4150-86d9-0717857ab295.png)
 # anime-sagan-pytorch
 using  SAGAN to generate anime girls pic.
 
