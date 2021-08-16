@@ -44,6 +44,13 @@ class Generator(nn.Module):
         nn.ReLU()
 
     )
+
+    curr_dim = curr_dim // 2
+    #self.l5 = nn.Sequential(
+     #   spectral_norm(nn.ConvTranspose2d(curr_dim, curr_dim // 2, 4, 2, 1)),
+     #   nn.LayerNorm([64, 64, 64]),
+      #  nn.ReLU()
+    #)
     self.last = nn.Sequential(
         nn.ConvTranspose2d(64, 3, 4, 2, 1),
         nn.Tanh()
@@ -52,11 +59,13 @@ class Generator(nn.Module):
     self.attn2 = selfattention(64)
   def forward(self, input):
     input = input.view(input.size(0), input.size(1), 1, 1)
-    out = self.l1(input)
+    out = self.l1(input) #256
 
-    out = self.l2(out)
+    out = self.l2(out)# 128
 
-    out = self.l3(out)
+    out = self.l3(out)# 64
+
+
     out = self.attn1(out)
     out = self.l4(out)
     out = self.attn2(out)
